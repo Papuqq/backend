@@ -1,7 +1,7 @@
-# project_16.7_-PJ-03-
+# final djaango project
         admin - admin admin
 
-# install
+# how to start
         venv\scripts\activate
         pip install django
         pip install django-filter
