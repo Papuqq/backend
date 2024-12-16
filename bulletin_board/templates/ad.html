@@ -1,0 +1,21 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+Ads
+{% endblock title %}
+{% block content %}
+<br>
+<div class="text-secondary">{{ ad.date_create|date:'d M Y' }}</div>
+
+{% if user.is_authenticated %}
+    <a href="{{ ad.id }}/delete/">Delete 🗑</a> |
+    <a href="{{ ad.id }}/update/">Edit ✏</a>
+{% endif %}
+<h1>{{ ad.header }}</h1>
+<p>{{ ad.text|safe }}</p>
+<div class="">
+    <a href="{% url 'responses_create' ad=ad.id %}">
+        Откликнуться
+    </a>
+</div>
+{% endblock content %}

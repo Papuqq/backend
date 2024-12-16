@@ -1,0 +1,19 @@
+{% extends 'flatpages/default.html' %}
+
+{% block content %}
+<h1>{{ response_detail.text }}</h1>
+<hr>
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="response_detail_id" value="{{ response_detail.id }}" />
+
+    {% if response_detail.status %}
+        <button disabled>Принять отклик</button>
+        <button name="action" value="unsubscribe">Отказаться</button>
+    {% else %}
+        <button name="action" value="subscribe">Принять отклик</button>
+        <button disabled>Отказаться</button>
+    {% endif %}
+</form>
+<a href="{% url 'response_delete' response_detail.id %}">Удалить</a>
+{% endblock content %}
